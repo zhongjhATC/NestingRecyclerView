@@ -6,7 +6,6 @@ import java.util.List;
  * 外层的info
  * Created by zhongjh on 2018/7/26.
  */
-
 public class ParentInfo {
 
     private String title;
@@ -28,4 +27,5 @@ public class ParentInfo {
     public void setMenuList(List<ChildInfo> menuList) {
         this.menuList = menuList;
     }
+
 }

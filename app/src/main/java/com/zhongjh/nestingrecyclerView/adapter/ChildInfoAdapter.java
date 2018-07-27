@@ -5,9 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhongjh.nestingrecyclerView.MainActivity;
 import com.zhongjh.nestingrecyclerView.R;
 import com.zhongjh.nestingrecyclerView.bean.ChildInfo;
 
@@ -15,30 +15,31 @@ import java.util.List;
 
 
 /**
- * 内部的RecyclerView
- * 内容为：
- * imageView + textView
- * Created by gaoshiwei on 2017/9/19.
+ * 子适配器
+ * Created by zhongjh on 2018/7/26.
  */
-
 public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.ViewHolder> {
 
     private Context context;
-    private List<ChildInfo> list; // List 集合（里面是image+text）
+    private List<ChildInfo> list; // 数据源
 
-    /**
-     * 构造函数
-     * @param context
-     * @param list
-     */
-    public ChildInfoAdapter(Context context, List<ChildInfo> list) {
+    ChildInfoAdapter(Context context, List<ChildInfo> list) {
         this.context = context;
         this.list = list;
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return MainActivity.CHILD_VIEW_TYPE;
+    }
+
+    public void setData(List<ChildInfo> list){
+        this.list = list;
+    }
+
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.menu_info_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_child, parent, false);
         return new ViewHolder(view);
     }
 
@@ -54,17 +55,15 @@ public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.View
     }
 
     /**
-     * static ViewHolder
+     * ViewHolder
      */
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageInfo;
         TextView textInfo;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
-            imageInfo = (ImageView) itemView.findViewById(R.id.image_info);
-            textInfo = (TextView) itemView.findViewById(R.id.text_info);
+            textInfo = itemView.findViewById(R.id.tvChildTitle);
         }
     }
 

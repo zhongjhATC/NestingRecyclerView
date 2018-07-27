@@ -2,15 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="16dp"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/menu_title"
+        android:textSize="26sp"
+        android:id="@+id/tvParentTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <!--内层的RecyclerView-->
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/menu_info_recyclerview"
+        android:id="@+id/rlChild"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!-- 最外层的RecyclerView -->
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recylerview"
+        android:id="@+id/rlParent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
