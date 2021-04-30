@@ -2,6 +2,7 @@ package com.zhongjh.nestingrecyclerView.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,14 @@ import java.util.List;
 
 /**
  * 子适配器
- * Created by zhongjh on 2018/7/26.
+ *
+ * @author zhongjh
+ * @date 2018/7/26
  */
 public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.ViewHolder> {
 
-    private Context context;
-    private List<ChildInfo> list; // 数据源
+    private final Context context;
+    private List<ChildInfo> list;
 
     ChildInfoAdapter(Context context, List<ChildInfo> list) {
         this.context = context;
@@ -40,6 +43,7 @@ public class ChildInfoAdapter extends RecyclerView.Adapter<ChildInfoAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_child, parent, false);
+        Log.d("onCreateViewHolder","创建子item");
         return new ViewHolder(view);
     }
 

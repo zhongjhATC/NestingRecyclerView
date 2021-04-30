@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +20,18 @@ import java.util.List;
 
 /**
  * 父适配器
- * Created by zhongjh on 2018/7/26.
+ *
+ * @author zhongjh
+ * @date 2018/7/26
  */
 public class ParentInfoAdapter extends RecyclerView.Adapter<ParentInfoAdapter.ViewHolder> {
 
-    private Context context;
-    private List<ParentInfo> list; // 数据源
-    private RecyclerView.RecycledViewPool recycledViewPool;// 从MainActivity传递过来的共享池
+    private final Context context;
+    private final List<ParentInfo> list;
+    /***
+     * 从MainActivity传递过来的共享池
+     */
+    private final RecyclerView.RecycledViewPool recycledViewPool;
 
     public ParentInfoAdapter(Context context, List<ParentInfo> list, RecyclerView.RecycledViewPool recycledViewPool) {
         this.context = context;
@@ -36,6 +42,7 @@ public class ParentInfoAdapter extends RecyclerView.Adapter<ParentInfoAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_parent, parent, false);
+        Log.d("onCreateViewHolder","创建父item");
         return new ViewHolder(view, recycledViewPool);
     }
 
